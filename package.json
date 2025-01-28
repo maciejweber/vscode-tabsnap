@@ -1,0 +1,55 @@
+{
+  "name": "tabsnap",
+  "displayName": "TabSnap",
+  "description": "Copy Content of All Open Tabs to Clipboard",
+  "version": "0.0.1",
+  "publisher": "Maciej Weber",
+  "engines": {
+    "vscode": "^1.96.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/maciejweber/vscode-tabsnap.git"
+  },
+  "bugs": {
+    "url": "https://github.com/maciejweber/vscode-tabsnap/issues"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "menus": {
+      "editor/title": [
+        {
+          "command": "extension.copyAllTabsContent",
+          "group": "2_workspace",
+          "when": "editorIsOpen && resourceScheme == file"
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "extension.copyAllTabsContent",
+        "title": "Copy All Tabs Content"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.96.0",
+    "@types/node": "20.x",
+    "typescript": "^5.7.2",
+    "@vscode/test-electron": "^2.4.1"
+  }
+}
